@@ -19,3 +19,21 @@ export const loadData = (payload) => ({
   payload
 });
 
+const initialState = {}
+
+const filterStore = (state = initialState, action) => {
+  switch(action.type) {
+    case SORT_BY_ALPHABET:
+      return state
+    case SORT_BY_PRICE:
+      return state
+    case FILTER_BY_PRICE:
+      return state
+    case LOAD_DATA:
+      return state
+    default:
+      return state
+  }
+}
+
+export default filterStore
