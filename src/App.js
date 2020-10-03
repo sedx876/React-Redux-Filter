@@ -11,6 +11,11 @@ class App extends Component {
     this.props.dispatch(loadData({count: 20}))
   }
 
+  filterByInput(e) {
+    let input = e.target.value
+    this.props.dispatch(filterByValue({value: input}))
+  }
+
   render() {
     return (
       <div className="App">
@@ -42,7 +47,10 @@ class App extends Component {
                   </div>
                 </div>
                 <div className='control' style={{minWidth: "300px"}}>
-                  <input style={{width: '100%'}} placeholder='Filter by' type='text'/>
+                  <input onChange={e => {
+                    //call this method on every change in input
+                    this.filterByInput(e)
+                  }} style={{width: '100%'}} placeholder='Filter by' type='text'/>
                 </div>
               </div>
             </div>

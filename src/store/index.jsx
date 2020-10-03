@@ -1,3 +1,6 @@
+import generate from "../helpers/data"
+
+
 const SORT_BY_ALPHABET = "SORT_BY_ALPHABET";
 const SORT_BY_PRICE = "SORT_BY_PRICE";
 const LOAD_DATA = "LOAD_DATA";
