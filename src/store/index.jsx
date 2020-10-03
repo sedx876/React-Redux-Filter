@@ -30,7 +30,12 @@ const filterStore = (state = initialState, action) => {
     case FILTER_BY_PRICE:
       return state
     case LOAD_DATA:
-      return state
+      let count = action.payload.count 
+      let products = generate(count)
+      return {
+        ...state,
+        products
+      }
     default:
       return state
   }
