@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './styles/App.css';
 import {connect} from 'react-redux'
-import {loadData} from './store'
+import {loadData, filterByValue} from './store'
+
 
 class App extends Component {
 
@@ -11,12 +12,13 @@ class App extends Component {
     this.props.dispatch(loadData({count: 20}))
   }
 
-  filterByInput(e) {
-    let input = e.target.value
+  filterByInput(e){
+    let input = e.target.value;
     this.props.dispatch(filterByValue({value: input}))
-  }
+}
 
   render() {
+    let products = this.props.state.filteredProducts
     return (
       <div className="App">
         <section className="hero">
@@ -35,7 +37,7 @@ class App extends Component {
           <div className="container">
             <div>
               <div className="field is-grouped" style={{alignItems: "center"}}>
-                <div clasName="control">
+                <div className="control">
                   <div className="select">
                     <select>
                       <option value='' disabled selected>Sort by</option>
@@ -55,7 +57,7 @@ class App extends Component {
               </div>
             </div>
             <div className='title is-ancestor' style={{flexWrap: 'wrap'}}>
-              {this.props.state.products && this.props.state.products.map(product => (
+              {products && products.length && products.map(product => (
                 <div className='tile is-parent is-3'>
                 <div className='tile is-child box'>
                 <p>
